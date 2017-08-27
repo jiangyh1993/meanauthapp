@@ -29,6 +29,9 @@ const port = 3000;
 //cors middleware
 app.use(cors());
 
+//set static folder
+app.use(express.static(path.join(__dirname, 'public')));
+
 //body parser middleware
 app.use(bodyParser.json());
 
@@ -37,9 +40,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 require('./config/passport')(passport);
-
-//set static folder
-app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/users', users);
 
